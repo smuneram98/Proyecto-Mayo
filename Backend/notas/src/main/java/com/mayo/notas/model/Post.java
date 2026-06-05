@@ -2,7 +2,6 @@ package com.mayo.notas.model;
 
 import jakarta.persistence.*;
 
-
 @Entity
 @Table(name="post")
 public class Post {
@@ -12,6 +11,10 @@ public class Post {
 
     @Column
     private String content;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     public Post() {
     }
@@ -32,6 +35,12 @@ public class Post {
         this.content = content;
     }
 
-    
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
     
 }

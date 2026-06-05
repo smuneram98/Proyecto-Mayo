@@ -1,9 +1,13 @@
 package com.mayo.notas.model;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 
 @Entity
-@Table
+@Table(name = "user")
 public class User {
 
     @Id
@@ -16,8 +20,11 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @Column
-    private Post[] posts;
+    
+    @JsonIgnore   
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Post> posts;
+    
 
     public User() {
     }
@@ -46,14 +53,12 @@ public class User {
         this.password = password;
     }
 
-    public Post[] getPosts() {
+    public List<Post> getPosts() {
         return posts;
     }
 
-    public void setPosts(Post[] posts) {
+    public void setPosts(List<Post> posts) {
         this.posts = posts;
     }
-
-    
 
 }
