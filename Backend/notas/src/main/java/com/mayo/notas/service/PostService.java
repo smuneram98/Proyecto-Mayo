@@ -17,11 +17,11 @@ public class PostService {
     private UserRepository userRepository;
 
     public Post save(Post post){
-        Long userId=post.getUser().getId();
+        Long userId=post.getUsuario().getId();
         User user=userRepository.findById(userId)
         .orElseThrow(()->new ResourceNotFoundException("No existe el usuario"));
 
-        post.setUser(user);
+        post.setUsuario(user);
 
         return postRepository.save(post);
     }

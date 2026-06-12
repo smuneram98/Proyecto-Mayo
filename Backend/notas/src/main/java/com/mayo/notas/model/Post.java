@@ -3,7 +3,8 @@ package com.mayo.notas.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="post")
+@Table(name="post",
+       uniqueConstraints = @UniqueConstraint(columnNames = "user_id"))
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,7 +15,8 @@ public class Post {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    //@Column
+    private User usuario;
 
     public Post() {
     }
@@ -35,12 +37,12 @@ public class Post {
         this.content = content;
     }
 
-    public User getUser() {
-        return user;
+    public User getUsuario() {
+        return usuario;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsuario(User usuario) {
+        this.usuario = usuario;
     }
     
 }
