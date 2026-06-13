@@ -9,13 +9,16 @@ import org.springframework.web.bind.annotation.*;
 import com.mayo.notas.model.User;
 import com.mayo.notas.service.UserService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/user")
+@RequiredArgsConstructor
 public class UserController {
     
-    private UserService userService;
+    private final UserService userService;
 
-    @PostMapping
+    @PostMapping("/crear")
     public ResponseEntity<User> crear(@RequestBody User user){
         return ResponseEntity.ok(userService.save(user));
     }

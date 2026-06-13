@@ -10,11 +10,14 @@ import com.mayo.notas.model.User;
 import com.mayo.notas.repository.PostRepository;
 import com.mayo.notas.repository.UserRepository;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class PostService {
     
-    private PostRepository postRepository;
-    private UserRepository userRepository;
+    private final PostRepository postRepository;
+    private final UserRepository userRepository;
 
     public Post save(Post post){
         Long userId=post.getUsuario().getId();
@@ -30,8 +33,8 @@ public class PostService {
         return postRepository.findAll();
     }
 
-    public List<Post> findByUserId(Long userId){
-        return postRepository.findByUserId(userId);
+    public List<Post> findByUsuarioId(Long userId){
+        return postRepository.findByUsuarioId(userId);
     }
 
     

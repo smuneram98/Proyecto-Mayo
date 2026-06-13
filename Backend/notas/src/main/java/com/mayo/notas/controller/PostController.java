@@ -8,13 +8,16 @@ import org.springframework.web.bind.annotation.*;
 import com.mayo.notas.model.Post;
 import com.mayo.notas.service.PostService;
 
+import lombok.RequiredArgsConstructor;
+
 @RestController
 @RequestMapping("/api/post")
+@RequiredArgsConstructor
 public class PostController {
 
-    private PostService postService;
+    private final PostService postService;
     
-    @PostMapping
+    @PostMapping("/crear")
     public ResponseEntity<Post> crear(@RequestBody Post post){
         return ResponseEntity.ok(postService.save(post));
     }
@@ -25,8 +28,8 @@ public class PostController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<Post>> findByUserId(@PathVariable Long id){
-        return ResponseEntity.ok(postService.findByUserId(id));
+    public ResponseEntity<List<Post>> findByUsuarioId(@PathVariable Long id){
+        return ResponseEntity.ok(postService.findByUsuarioId(id));
     }
  
 }
