@@ -21,10 +21,8 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    
     @JsonIgnore   
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-   // @Column(nullable = false)
     private List<Post> posts;
     
 
@@ -32,7 +30,7 @@ public class User {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -40,7 +38,7 @@ public class User {
     }
 
     public String getUsername() {
-        return username;
+        return this.username;
     }
 
     public void setUsername(String username) {
@@ -48,7 +46,7 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return this.password;
     }
 
     public void setPassword(String password) {
@@ -56,7 +54,7 @@ public class User {
     }
 
     public List<Post> getPosts() {
-        return posts;
+        return this.posts;
     }
 
     public void setPosts(List<Post> posts) {

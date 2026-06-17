@@ -2,7 +2,6 @@ package com.mayo.notas.controller;
 
 import java.util.List;
 
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.mayo.notas.model.Post;
@@ -18,18 +17,18 @@ public class PostController {
     private final PostService postService;
     
     @PostMapping("/crear")
-    public ResponseEntity<Post> crear(@RequestBody Post post){
-        return ResponseEntity.ok(postService.save(post));
+    public Post crear(@RequestBody Post post){
+        return postService.save(post);
     }
 
     @GetMapping
-    public ResponseEntity<List<Post>> findAll(){
-        return ResponseEntity.ok(postService.findAll());
+    public List<Post> findAll(){
+        return postService.findAll();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<List<Post>> findByUsuarioId(@PathVariable Long id){
-        return ResponseEntity.ok(postService.findByUsuarioId(id));
+    public List<Post> findByUsuarioId(@PathVariable Long id){
+        return postService.findByUsuarioId(id);
     }
  
 }

@@ -15,14 +15,13 @@ public class Post {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
-    //@Column
     private User usuario;
 
     public Post() {
     }
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -30,7 +29,7 @@ public class Post {
     }
 
     public String getContent() {
-        return content;
+        return this.content;
     }
 
     public void setContent(String content) {
@@ -38,7 +37,7 @@ public class Post {
     }
 
     public User getUsuario() {
-        return usuario;
+        return this.usuario;
     }
 
     public void setUsuario(User usuario) {
