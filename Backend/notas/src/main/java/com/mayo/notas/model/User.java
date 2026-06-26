@@ -7,8 +7,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="usuario",
-       uniqueConstraints = @UniqueConstraint(columnNames = "username"))
+@Table(name="usuario")
+       /* @Table(name="usuario",
+       uniqueConstraints = @UniqueConstraint(columnNames = "username")) */
 public class User {
 
     @Id
@@ -21,11 +22,10 @@ public class User {
     @Column(nullable = false)
     private String password;
 
-    @JsonIgnore   
+    /* @JsonIgnore   
     @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Post> posts;
+    private List<Post> posts; */
     
-
     public User() {
     }
 
@@ -53,12 +53,12 @@ public class User {
         this.password = password;
     }
 
-    public List<Post> getPosts() {
+    /* public List<Post> getPosts() {
         return this.posts;
     }
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
-    }
+    } */
 
 }

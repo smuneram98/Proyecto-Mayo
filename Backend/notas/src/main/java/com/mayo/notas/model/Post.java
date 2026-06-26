@@ -3,8 +3,9 @@ package com.mayo.notas.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name="post",
-       uniqueConstraints = @UniqueConstraint(columnNames = "user_id"))
+@Table(name="post")
+/* @Table(name="post",
+       uniqueConstraints = @UniqueConstraint(columnNames = "user_id")) */
 public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

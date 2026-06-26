@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import com.mayo.notas.dto.LoginRequest;
 import com.mayo.notas.model.User;
 import com.mayo.notas.service.UserService;
 
@@ -31,5 +32,16 @@ public class UserController {
     @GetMapping("/{name}")
     public ResponseEntity<Optional<User>> findByUsername(@PathVariable String name){
         return ResponseEntity.ok(userService.findByName(name));
+    }
+
+    @PutMapping("/{id}")
+    public User update(@PathVariable Long id, @RequestBody User userDetails) {
+        return userService.update(id,userDetails);      
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<?> login(@RequestBody LoginRequest request){
+        String response= userService.login(request);
+        return ResponseEntity.ok(response);
     }
 }
